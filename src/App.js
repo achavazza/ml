@@ -1,25 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import { Route, BrowserRouter as Router } from "react-router-dom";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import SearchBar from "./components/SearchBar";
+
+//import Home from "./pages/Home";
+import Search from "./pages/Search";
+import Product from "./pages/Product";
+
+export class App extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			//error: "",
+		};
+	}
+
+	handleErrors = (error) => {
+		this.setState({ error: error });
+	};
+
+	render() {
+		console.log(this.state)
+		//const searchString = this.state.seachString;
+		return (
+			<div className="App">
+				<SearchBar />
+				<Router>
+					<Route exact path="/items" component={Search} />
+					<Route path="/items/:id" component={Product} />
+				</Router>
+			</div>
+		);
+	}
 }
 
 export default App;

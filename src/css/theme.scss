@@ -1,0 +1,19 @@
+//vars
+$margin    : 16px ;
+$margin-md : 32px ;
+
+// colors
+$colorYellow       :#FFE600;
+$colorDarkGrey     :#333333;
+$colorGrey         :#666666;
+$colorLightGrey    :#999999;
+$colorLightestGrey :#EEEEEE;
+$colorBlue         :#3483FA;
+$colorWhite        :#ffffff;
+$colorBlack        :#000000;
+
+@import 'layout';
+@import 'header';
+@import 'itemCard';
+@import 'product';
+@import 'style';

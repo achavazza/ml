@@ -1,0 +1,43 @@
+//main: theme.scss
+
+.itemCard{
+    display: flex;
+    flex-flow: row wrap;
+    color: inherit;
+    text-decoration: none;
+    padding: $margin 0;
+    margin: 0 $margin;
+    border-bottom: 1px solid $colorLightestGrey;
+    //border-bottom: 1px solid rgba(0,0,0,.1);
+       
+    
+    .itemThumb{
+        width: 180px;
+        height: 180px;
+        flex: 0;
+        flex-basis: 180px;
+        border-radius: 4px;
+        
+        color: $colorDarkGrey;
+        margin-right: $margin;
+
+        img{
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+    }
+    .desc{
+        flex: 1;
+
+    }
+    
+    .price{
+        font-size: 24px;
+        margin-bottom: $margin-md;
+    }
+    .title{
+        font-weight: normal;
+        font-size: 18px;
+    }
+}

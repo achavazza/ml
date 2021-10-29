@@ -14,19 +14,15 @@ export class App extends Component {
 			//error: "",
 		};
 	}
-
-	handleErrors = (error) => {
-		this.setState({ error: error });
-	};
-
+	
 	render() {
-		console.log(this.state)
+		//console.log(this.state)
 		//const searchString = this.state.seachString;
 		return (
 			<div className="App">
 				<SearchBar />
 				<Router>
-					<Route exact path="/items" component={Search} />
+					<Route exact path="/items" component={Search}  />
 					<Route path="/items/:id" component={Product} />
 				</Router>
 			</div>

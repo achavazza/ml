@@ -8,7 +8,7 @@ export class Search extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			seachString: "",
+			//seachString: "",
 			items: [],
 			//error: "",
 		};
@@ -46,10 +46,10 @@ export class Search extends Component {
 					});
 				});
                 this.setState({items:itemsFound});
+                console.log('resultados:', this.state.items)
 			})
 			.catch((error) => {
 				console.log('error:', error);
-				this.props.onError(error);
 			});
     };
 

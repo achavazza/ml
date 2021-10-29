@@ -39,6 +39,7 @@ export class Product extends Component {
     */
 
 	fetchItem({ id }) {
+		//console.log('thisid: 'id);
 		fetch(`https://api.mercadolibre.com/items/${id}`)
 			.then((res) => res.json())
 			.then((item) => {
@@ -57,7 +58,7 @@ export class Product extends Component {
 					},
 					//},
 				});
-				//console.log('agrega valores', this.state);
+				console.log('agrego valores', this.state);
 				this.fetchDescription(id);
 			});
 	}
@@ -71,8 +72,8 @@ export class Product extends Component {
 					description: item.plain_text,
 					//}
 				});
+                console.log('actualizo la descripcion', this.state);
 			});
-		//console.log("actualiza la descripcion", this.state);
 	}
 	componentDidMount() {
 		const { id } = this.props.match.params;

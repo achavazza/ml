@@ -3,37 +3,37 @@
 * { box-sizing: border-box }
 
 html, body{
-    margin: 0;
-    padding: 0;
+	margin: 0;
+	padding: 0;
 }
 .container{
-    max-width: 100%;
-    margin: 0 40px;
+	max-width: 100%;
+	margin: 0 40px;
 }
 @media screen and (min-width: 960px){
-    .container{
-        max-width: 800px;
-        margin: 0 auto;
-    }
+	.container{
+		max-width: 800px;
+		margin: 0 auto;
+	}
 }
 
 @media screen and (min-width: 1600px){
-    .container{
-        max-width: 1200px;
-        margin: 0 auto;
-    }
+	.container{
+		max-width: 1200px;
+		margin: 0 auto;
+	}
 }
 
 .main{
-    padding: 20px 0;
+	padding: 20px 0;
 }
 
 /* 
 .flex-grid {
-    display: flex;
+	display: flex;
 }
 .col {
-    flex: 1;
+	flex: 1;
 }
 */
 

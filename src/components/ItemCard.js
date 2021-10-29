@@ -9,17 +9,22 @@ export class ItemCard extends Component {
 	static propTypes = {
 		id: PropTypes.string,
 		title: PropTypes.string,
-		price: PropTypes.number,
-		amount: PropTypes.number,
-		currency: PropTypes.string,
-		decimals: PropTypes.number,
+		//price: PropTypes.number,
+		price: PropTypes.shape({
+			amount: PropTypes.number,
+			currency: PropTypes.string,
+			decimals: PropTypes.number,
+		}),
+		//amount: PropTypes.number,
+		//currency: PropTypes.string,
+		//decimals: PropTypes.number,
 		picture: PropTypes.string,
 		free_shipping: PropTypes.bool,
 		condition: PropTypes.string,
 	};
 	render() {
-		const { id, title, picture, currency, amount, free_shipping } = this.props;
-		//const { id, title, picture, currency, amount, decimals, free_shipping, condition, } = this.props;
+		const { id, title, picture, price, free_shipping } = this.props;
+		const { amount, currency, /* decimals */ } = price;
 		const free_img = free_shipping ? (
 			<img src={icFree} alt="Envío Gratis" />
 		) : (

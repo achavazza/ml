@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from "prop-types";
 
 import { ItemCard } from "../components/ItemCard";
 
@@ -13,16 +14,34 @@ export class Search extends Component {
 			//error: "",
 		};
 	}
-    /* 
-	handleSearch = (state) => {
-        console.log(state);
+    
+	static propTypes = {
+        author: PropTypes.objectOf({
+            name: PropTypes.string,
+			lastname: PropTypes.string,
+		}),
+		categories: PropTypes.arrayOf(PropTypes.string),
+		items: PropTypes.arrayOf({
+            id: PropTypes.string,
+			title: PropTypes.string,
+			price: PropTypes.objectOf({
+                amount: PropTypes.number,
+                currency: PropTypes.string,
+                decimals: PropTypes.number,
+			}),
+			picture: PropTypes.string,
+			condition: PropTypes.string,
+			free_shipping: PropTypes.bool,
+		}),
+		
 	};
-    */
+	
+
 	triggerSearch = async (searchString) => {
 		//let { searchString } = this.state;
 
 		/* tenia algunos problemas con espacios "Apple Ipod" => 'apple+ipod'*/
-        /* lo comento porque ahora lo hace el browser */
+		/* lo comento porque ahora lo hace el browser */
 		//searchString = searchString.toLowerCase().replace(" ", "+");
 
 		/* ...visualizando solo 4 productos ... */
@@ -32,29 +51,31 @@ export class Search extends Component {
 			.then((res) => res.json())
 			.then((results) => {
 				results.results.forEach((result) => {
-                    //console.log(result.prices);
+
+					//console.log(result.prices);
 					itemsFound.push({
-                        id: result.id,
+						id: result.id,
 						title: result.title,
-						price: result.price,
-						amount: result.price,
-						currency: result.currency_id ? "$" : "",
-						decimals: 2,
+						price: {
+                            amount: result.price,
+                            currency: result.currency_id ? "$" : "",
+                            decimals: 2,
+                        },
 						picture: result.thumbnail,
 						free_shipping: result.shipping.free_shipping,
 						condition: result.condition === "new" ? "Nuevo" : "Usado",
 					});
 				});
-                this.setState({items:itemsFound});
-                console.log('resultados:', this.state.items)
+				this.setState({ items: itemsFound });
+				console.log("resultados:", this.state.items);
+
 			})
 			.catch((error) => {
-				console.log('error:', error);
+				console.log("error:", error);
 			});
-    };
+	};
 
 	renderResults() {
-        
 		const { items } = this.state;
 
 		return items.map((item, i) => {
@@ -74,14 +95,14 @@ export class Search extends Component {
 			);
 		});
 	}
-    componentDidMount(){
-			//const searchString = this.state.seachString;
-			const { search } = window.location;
-			const searchString = new URLSearchParams(search).get("search");
+	componentDidMount() {
+		//const searchString = this.state.seachString;
+		const { search } = window.location;
+		const searchString = new URLSearchParams(search).get("search");
 
-			console.log('searchString:', searchString);
-			this.triggerSearch(searchString);
-		}
+		console.log("searchString:", searchString);
+		this.triggerSearch(searchString);
+	}
 
 	render() {
 		return (

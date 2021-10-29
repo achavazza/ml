@@ -3,17 +3,24 @@ import PropTypes from "prop-types";
 
 export class Product extends Component {
 	static propTypes = {
-		id: PropTypes.string,
-		title: PropTypes.string,
-		picture: PropTypes.string,
-		condition: PropTypes.string,
-		free_shipping: PropTypes.bool,
-		sold_quantity: PropTypes.string,
-		description: PropTypes.string,
-		price: PropTypes.func,
-        currency: PropTypes.string,
-        amount: PropTypes.number,
-        decimals: PropTypes.number,
+		author: PropTypes.objectOf({
+			name: PropTypes.string,
+			lastname: PropTypes.string,
+		}),
+		item: PropTypes.objectOf({
+			id: PropTypes.string,
+			title: PropTypes.string,
+			price: PropTypes.objectOf({
+				currency: PropTypes.string,
+				amount: PropTypes.number,
+				decimals: PropTypes.number,
+			}),
+			picture: PropTypes.string,
+			condition: PropTypes.string,
+			free_shipping: PropTypes.bool,
+			sold_quantity: PropTypes.string,
+			description: PropTypes.string,
+		}),
 	};
 	constructor(props) {
 		super(props);
@@ -32,7 +39,7 @@ export class Product extends Component {
 			},
 		};
 	}
-    /* 
+	/* 
 	_handleResults = (results) => {
         this.setState({ results });
 	};
@@ -58,7 +65,7 @@ export class Product extends Component {
 					},
 					//},
 				});
-				console.log('agrego valores', this.state);
+				console.log("agrego valores", this.state);
 				this.fetchDescription(id);
 			});
 	}
@@ -72,7 +79,7 @@ export class Product extends Component {
 					description: item.plain_text,
 					//}
 				});
-                console.log('actualizo la descripcion', this.state);
+				console.log("actualizo la descripcion", this.state);
 			});
 	}
 	componentDidMount() {
@@ -96,36 +103,36 @@ export class Product extends Component {
 		const { amount, currency } = price;
 
 		return (
-			<div>
-				<section className="main">
-					<div className="container">
-						<div className="content">
-							<div id={id} className="shortInfo">
-								<div className="img">
-									<img src={picture} alt={title} />
-								</div>
-								<div className="desc">
-									<div className="meta">
-										<span>{condition}</span>
-										<span> - </span>
-										<span>{`${sold_quantity} vendidos`}</span>
-									</div>
-									<h2 className="title">{title}</h2>
-									<div className="price">
-										<span>{`${currency} ${amount}`}</span>
-									</div>
-									<div>{free_shipping}</div>
-									<button className="button">Comprar</button>
-								</div>
-							</div>
-							<div className="description">
-								<h4 className="title">Descripción del producto</h4>
-								<p>{description}</p>
-							</div>
-						</div>
-					</div>
-				</section>
-			</div>
+        <div>
+            <section className="main">
+                <div className="container">
+                    <div className="content">
+                        <div id={id} className="shortInfo">
+                            <div className="img">
+                                <img src={picture} alt={title} />
+                            </div>
+                            <div className="desc">
+                                <div className="meta">
+                                    <span>{condition}</span>
+                                    <span> - </span>
+                                    <span>{`${sold_quantity} vendidos`}</span>
+                                </div>
+                                <h2 className="title">{title}</h2>
+                                <div className="price">
+                                    <span>{`${currency} ${amount}`}</span>
+                                </div>
+                                <div>{free_shipping}</div>
+                                <button className="button">Comprar</button>
+                            </div>
+                        </div>
+                        <div className="description">
+                            <h4 className="title">Descripción del producto</h4>
+                            <p>{description}</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
 		);
 	}
 }

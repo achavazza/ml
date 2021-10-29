@@ -1,8 +1,5 @@
 import React, { Component } from "react";
 
-import PropTypes from "prop-types";
-
-
 import logo from "../assets/Logo_ML.png";
 import icSearch from "../assets/ic_Search.png";
 
@@ -15,19 +12,6 @@ export class SearchBar extends Component {
 		//this.handleSubmit = this.handleSubmit.bind(this);
 		//this.handleChange = this.handleChange.bind(this);
 	}
-
-	static propTypes = {
-		id: PropTypes.string,
-		title: PropTypes.string,
-		categories: PropTypes.arrayOf(PropTypes.string),
-		price: PropTypes.func,
-		currency: PropTypes.string,
-		amount: PropTypes.number,
-		decimals: PropTypes.number,
-		condition: PropTypes.string,
-		picture: PropTypes.string,
-		free_shipping: PropTypes.bool,
-	};
 
 	handleChange = (e) => {
 		this.setState({ searchString: e.target.value });

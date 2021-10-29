@@ -22,7 +22,8 @@ export class Search extends Component {
 		//let { searchString } = this.state;
 
 		/* tenia algunos problemas con espacios "Apple Ipod" => 'apple+ipod'*/
-		searchString = searchString.toLowerCase().replace(" ", "+");
+        /* lo comento porque ahora lo hace el browser */
+		//searchString = searchString.toLowerCase().replace(" ", "+");
 
 		/* ...visualizando solo 4 productos ... */
 		const limit = "&limit=4";
